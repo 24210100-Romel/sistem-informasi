@@ -1,0 +1,13 @@
+# Cadangan untuk hosting yang document root-nya TIDAK bisa diarahkan ke folder public/.
+# Cara yang benar: arahkan domain ke folder public/ (lihat PANDUAN-HOSTING.md). File ini hanya meneruskan ke public/.
+Options -Indexes
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Berkas dan folder internal tidak boleh dibuka sama sekali
+    RewriteRule ^(\.|artisan|composer\.|deploy\.sh|phpunit|package|vendor/|app/|bootstrap/|config/|database/|resources/|routes/|tests/|storage/(?!app/public)) - [F,L,NC]
+
+    # Teruskan semuanya ke public/
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>

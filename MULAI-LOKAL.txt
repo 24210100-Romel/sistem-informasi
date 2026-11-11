@@ -1,0 +1,16 @@
+MENJALANKAN DI KOMPUTER SENDIRI
+===============================
+Butuh: PHP 8.4.1+ (ekstensi mbstring, pdo_mysql, fileinfo, openssl, ctype, tokenizer, xml), MySQL (XAMPP/Laragon).
+
+1. Buat database kosong bernama db_diskominfo_manado (phpMyAdmin).
+2. Salin .env.example menjadi .env (isi DB_USERNAME/DB_PASSWORD bila MySQL Anda memakai kata sandi).
+3. Di terminal, dalam folder ini:
+     php artisan key:generate
+     php artisan migrate --seed
+     php artisan storage:link
+     php artisan serve
+4. Buka http://127.0.0.1:8000 . Admin: http://127.0.0.1:8000/login
+   Akun awal di lokal: admin / password  -> segera ganti di menu Pengguna.
+   (Di server produksi kata sandi admin awal dibuat acak atau dari ADMIN_PASSWORD; lihat PANDUAN-HOSTING.md.)
+
+Untuk di hosting/publik: baca PANDUAN-HOSTING.md.
